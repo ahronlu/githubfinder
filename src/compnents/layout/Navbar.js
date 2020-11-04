@@ -20,6 +20,11 @@ export default function Navbar() {
             <i className="fas fa-star" />
           </Link>
         </li>
+        <li>
+          <a href="https://github.com/koftov">
+            <i className="fab fa-github" />
+          </a>
+        </li>
       </ul>
     </nav>
   );
