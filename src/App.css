@@ -376,10 +376,13 @@ table th {
   color: #fff;
   padding: 0.45rem;
   margin: 0 0.25rem;
+  border-radius: 6px;
+  transition: all 350ms ease-in-out;
 }
 
 .navbar a:hover {
   color: var(--light-color);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .navbar .welcome span {
