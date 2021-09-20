@@ -21,7 +21,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
-          <a href="https://github.com/koftov">
+          <a href="https://github.com/ahronlu">
             <i className="fab fa-github" />
           </a>
         </li>
