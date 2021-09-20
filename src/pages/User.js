@@ -36,7 +36,7 @@ const User = ({ match }) => {
 
   return (
     <>
-      <Link to="/" className="btn btn-light">
+      <Link to="/" className="btn btn-dark">
         Back To Search
       </Link>
       Hireable:{" "}

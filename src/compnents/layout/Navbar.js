@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="navbar bg-primary">
+    <nav className="navbar bg-dark">
       <h1>
         <Link to="/">
           <i className="fab fa-github" /> Github Finder

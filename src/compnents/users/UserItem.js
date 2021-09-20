@@ -21,19 +21,19 @@ const UserItem = ({ user }) => {
 
   return (
     <div className="card text-center">
-      <img
-        src={user.avatar_url}
-        alt=""
-        className="round-img"
-        style={{ width: "60px" }}
+      <Link to={`/user/${user.login}/`}>
+        <img
+          src={user.avatar_url}
+          alt=""
+          className="round-img"
+          style={{ width: "60px" }}
+        />
+        <h3>{user.login}</h3>
+      </Link>
+      <i
+        className={`fa${isFav ? "s" : "r"} fa-heart c-pointer`}
+        onClick={click}
       />
-      <h3>{user.login}</h3>
-      <div>
-        <Link to={`/user/${user.login}/`} className="btn btn-dark btn-sm my-1">
-          More
-        </Link>
-        <i className={`fa${isFav ? "s" : "r"} fa-heart`} onClick={click} />
-      </div>
     </div>
   );
 };

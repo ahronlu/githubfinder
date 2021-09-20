@@ -6,13 +6,13 @@ import Spinner from "../layout/Spinner";
 const Users = () => {
   const { users, loading } = useSelector((state) => state.github);
 
+  if (loading) return <Spinner />;
+
   return (
     <div style={userStyle}>
-      {loading ? (
-        <Spinner />
-      ) : (
-        users.map((user) => <UserItem key={user.id} user={user} />)
-      )}
+      {users.map((user) => (
+        <UserItem key={user.id} user={user} />
+      ))}
     </div>
   );
 };
