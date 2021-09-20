@@ -15,7 +15,6 @@ const User = ({ match }) => {
 
   const { loading, user, repos } = useSelector((state) => state.github);
 
-  if (!user) return <h1>no user</h1>;
   const {
     name,
     company,
@@ -33,6 +32,9 @@ const User = ({ match }) => {
   } = user;
 
   if (loading) return <Spinner />;
+
+  if (!user && !loading)
+    return <h1 style={{ textAlign: "center" }}>No User</h1>;
 
   return (
     <>
