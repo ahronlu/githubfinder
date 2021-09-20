@@ -1,12 +1,9 @@
-import spinner from "./spinner.gif";
-
 const Spinner = () => (
-  <div style={{ margin: "auto" }}>
-    <img
-      src={spinner}
-      alt="Loading..."
-      style={{ width: "200px", margin: "auto", display: "block" }}
-    />
+  <div
+    class="fa-3x"
+    style={{ margin: "auto", width: "100%", textAlign: "center" }}
+  >
+    <i class="fas fa-cog fa-spin"></i>
   </div>
 );
 
