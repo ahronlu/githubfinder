@@ -5,31 +5,15 @@ import Spinner from "../compnents/layout/Spinner";
 import Repos from "../compnents/repos/Repos";
 import { getUser, getUserRepos } from "../actions/githubActions";
 
-const User = ({ match }) => {
+const User = ({ match: { params } }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUser(match.params.login));
-    dispatch(getUserRepos(match.params.login));
-  }, [dispatch, match]);
+    dispatch(getUser(params.login));
+    dispatch(getUserRepos(params.login));
+  }, [dispatch, params.login]);
 
   const { loading, user, repos } = useSelector((state) => state.github);
-
-  const {
-    name,
-    company,
-    avatar_url,
-    location,
-    bio,
-    blog,
-    login,
-    html_url,
-    followers,
-    following,
-    public_repos,
-    public_gists,
-    hireable,
-  } = user;
 
   if (loading) return <Spinner />;
 
@@ -42,7 +26,7 @@ const User = ({ match }) => {
         Back To Search
       </Link>
       Hireable:{" "}
-      {hireable ? (
+      {user.hireable ? (
         <i className="fas fa-check text-success" />
       ) : (
         <i className="fas fa-times-circle text-danger" />
@@ -50,45 +34,45 @@ const User = ({ match }) => {
       <div className="card grid-2">
         <div className="all-center">
           <img
-            src={avatar_url}
+            src={user.avatar_url}
             className="round-img"
             alt=""
             style={{ width: "150px" }}
           />
-          <h1>{name}</h1>
-          <p>Location: {location}</p>
+          <h1>{user.name}</h1>
+          <p>Location: {user.location}</p>
         </div>
         <div>
-          {bio && (
+          {user.bio && (
             <>
               <h3>Bio</h3>
-              <p>{bio}</p>
+              <p>{user.bio}</p>
             </>
           )}
-          <a href={html_url} className="btn btn-dark my-1">
+          <a href={user.html_url} className="btn btn-dark my-1">
             Visit Github Profile
           </a>
           <ul>
             <li>
-              {login && (
+              {user.login && (
                 <>
-                  <strong>Username: </strong> {login}
+                  <strong>Username: </strong> {user.login}
                 </>
               )}
             </li>
 
             <li>
-              {company && (
+              {user.company && (
                 <>
-                  <strong>Company: </strong> {company}
+                  <strong>Company: </strong> {user.company}
                 </>
               )}
             </li>
 
             <li>
-              {blog && (
+              {user.blog && (
                 <>
-                  <strong>Website: </strong> {blog}
+                  <strong>Website: </strong> {user.blog}
                 </>
               )}
             </li>
@@ -96,10 +80,14 @@ const User = ({ match }) => {
         </div>
       </div>
       <div className="card text-center">
-        <div className="badge badge-primary">Followers: {followers}</div>
-        <div className="badge badge-success">Following: {following}</div>
-        <div className="badge badge-light">Public Repos: {public_repos}</div>
-        <div className="badge badge-dark">Public Gists: {public_gists}</div>
+        <div className="badge badge-primary">Followers: {user.followers}</div>
+        <div className="badge badge-success">Following: {user.following}</div>
+        <div className="badge badge-light">
+          Public Repos: {user.public_repos}
+        </div>
+        <div className="badge badge-dark">
+          Public Gists: {user.public_gists}
+        </div>
       </div>
       <Repos repos={repos} />
     </>
