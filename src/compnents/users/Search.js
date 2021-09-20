@@ -25,6 +25,7 @@ const Search = () => {
       <form className="form" onSubmit={handleSubmit}>
         <input
           onChange={(e) => setText(e.target.value)}
+          value={text}
           type="text"
           name="text"
           placeholder="Search Users..."
@@ -36,7 +37,9 @@ const Search = () => {
         />
         {users.length ? (
           <input
-            onClick={() => dispatch(clearUsers())}
+            onClick={() => {
+              dispatch(clearUsers());
+            }}
             type="button"
             value="Clear"
             className="btn btn-light btn-block"
